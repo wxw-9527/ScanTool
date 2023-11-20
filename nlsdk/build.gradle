@@ -41,7 +41,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.wxw-9527'
                 artifactId = 'ScanTool'
-                version = '1.0.0.00'
+                version = '1.0.0.01'
             }
         }
     }
