@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish' // fix jitpack warning：'Gradle 'publishToMavenLocal' task not found. Please add the 'maven-publish' or 'maven' plugin.'
+}
+android {
+    namespace 'com.nlscan.nlsdk'
+    compileSdk 34
+    defaultConfig {
+        minSdk 21
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlin {
+        jvmToolchain(17)
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    api project(path: ':serial-port')
+}
+
+// fix jitpack warning：'Gradle 'publishToMavenLocal' task not found. Please add the 'maven-publish' or 'maven' plugin.'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.wxw-9527'
+                artifactId = 'nlsdk'
+                version = '1.0.0.00'
+            }
+        }
+    }
+}
