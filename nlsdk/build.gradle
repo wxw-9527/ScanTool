@@ -40,7 +40,7 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
                 groupId = 'com.github.wxw-9527'
-                artifactId = 'nlsdk'
+                artifactId = 'ScanTool'
                 version = '1.0.0.00'
             }
         }
