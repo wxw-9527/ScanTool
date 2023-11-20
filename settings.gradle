@@ -16,4 +16,3 @@ dependencyResolutionManagement {
 rootProject.name = "ScanTool"
 include ':app'
 include ':nlsdk'
-include ':serial-port'

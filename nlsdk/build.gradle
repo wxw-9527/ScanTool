@@ -24,13 +24,17 @@ android {
     kotlin {
         jvmToolchain(17)
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    api project(path: ':serial-port')
 }
 
 // fix jitpack warning：'Gradle 'publishToMavenLocal' task not found. Please add the 'maven-publish' or 'maven' plugin.'
@@ -41,7 +45,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.wxw-9527'
                 artifactId = 'ScanTool'
-                version = '1.0.0.01'
+                version = '1.0.1.00'
             }
         }
     }
